@@ -1,0 +1,8 @@
+<h1>Generate Invoice</h1>
+
+<%= form_with scope: :invoice, url: invoices_path, local: true do |f| %>
+<p>
+    <%= f.label :Company %>
+    <%= f.text_field :company_name %>
+</p>
+<% end %>
