@@ -12,22 +12,7 @@ class InvoicesController < ApplicationController
     invoice_number = @invoice.invoice_number
     @page_name = "INVOICE ##{invoice_number}"
 
-    respond_to do |format|
-            format.html
-            format.pdf do
-                render pdf: "Invoice No. #{@invoice.id}",
-                page_size: 'letter',
-                template: "invoices/show.html.erb",
-                layout: "pdf.html.erb",
-                orientation: "Landscape",
-                lowquality: true,
-                # viewport_size: '1280x1024',
-                zoom: 1,
-                dpi: 75
-                # user_style_sheet:"https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-                # show_as_html: true
-            end
-    end
+    generate_pdf(@invoice)
   end
 
   def new
@@ -50,7 +35,7 @@ class InvoicesController < ApplicationController
       flash[:notice] = "Invoice created successfully"
       redirect_to @invoice
     else
-      # render 'new'
+      render 'new'
       # redirect_to :action => "new"
     end
   end
@@ -65,8 +50,23 @@ class InvoicesController < ApplicationController
   end
 
 
-  def generate_pdf
-    pdf = WickedPdf.new.pdf_from_url('https://github.com/mileszs/wicked_pdf')
+  def generate_pdf(invoice)
+    respond_to do |format|
+            format.html
+            format.pdf do
+                render pdf: "Invoice No. #{@invoice.id}",
+                page_size: 'a4',
+                template: "invoices/show.html.erb",
+                layout: "pdf.html.erb",
+                orientation: "Landscape",
+                lowquality: true,
+                # viewport_size: '1280x1024',
+                zoom: 1,
+                dpi: 75
+                # user_style_sheet:"https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+                # show_as_html: true
+            end
+    end
   end
   
   #anything below this will be considered private
