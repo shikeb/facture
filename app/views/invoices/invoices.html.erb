@@ -1,0 +1,29 @@
+<%= render 'header' %>
+<div class="row">
+<div class="col-md-8 order-md-1 offset-md-2">
+
+
+<table class="table">
+<thead>
+<tr>
+  <th>Invoice ID</th>
+  <th>Company</th>
+  <th>Amount</th>
+  <th></th>
+</tr>
+</thead>
+
+<tbody>
+  <% @invoices.each do |invoice| %>
+    <tr>
+      <td><%= invoice.invoice_number  %></td>
+      <td><%= invoice.company_name  %></td>
+      <td><%= invoice.invoice_amount  %></td>
+      <td></td>
+    </tr>
+  <% end %>
+</tbody>
+
+</table>
+</div>
+</div>

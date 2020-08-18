@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fracture - Invoice #<%= @invoice.invoice_number %></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <%= wicked_pdf_stylesheet_link_tag "invoices" %>
+  </head>
+  <body>
+<%= render 'header' %>
+  <div class="container">
+   <div class="col-md-8 order-md-1 offset-md-2">
+  <div class="row">
+    <h4><%= @invoice.company_name %></h4>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="row">
+        <%= @invoice.merchant_name %>
+      </div>
+      <div class="row">
+        <%= @invoice.merchant_email %>
+      </div>
+    </div>
+     <hr class="mb-4">
+    <div class="col-md-6">
+      <div class="row">
+      <strong>Invoice#</strong>: <%= @invoice.invoice_number %>
+      </div>
+      <div class="row">
+      <strong>Date</strong>: <%= @invoice.created_at.strftime("%F") %>
+      </div>
+      <hr class="mb-4">
+      <div class="row">
+      <strong>Amount</strong>: <%= @invoice.currency %><%=@invoice.amount %>
+      </div>
+      <hr class="mb-4">
+    </div>
+  </div>
+
+  <div class="row mt-3"> <h5>Bill to:</h5> </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <%= @invoice.customer_name %>
+      </div>
+      <div class="row">
+        <%= @invoice.customer_email %>
+      </div>
+      <div class="row mt-4">
+        <h5>Description</h5>
+      </div>
+      <div class="row">
+        <%= @invoice.note %>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+  </body>
+</html>

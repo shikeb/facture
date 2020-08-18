@@ -25,6 +25,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# gems to generate pdf
+gem 'wicked_pdf'
+# Because wicked_pdf is a wrapper for wkhtmltopdf it needs to be installed too 
+gem 'wkhtmltopdf-binary'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

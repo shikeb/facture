@@ -1,8 +1,35 @@
-<h1>Generate Invoice</h1>
+<%= render 'header' %>
+<div class="row">
+<div class="col-md-8 order-md-1 offset-md-2">
+<table class="table">
+<thead>
+<tr>
+  <th>Invoice ID</th>
+  <th>Company</th>
+  <th>Customer</th>
+  <th>Amount Billed</th>
+  <th></th>
+</tr>
+</thead>
 
-<%= form_with scope: :invoice, url: invoices_path, local: true do |f| %>
-<p>
-    <%= f.label :Company %>
-    <%= f.text_field :company_name %>
-</p>
-<% end %>
+<tbody>
+  <% @invoices.each do |invoice| %>
+    <tr>
+      <td><%= invoice.invoice_number  %></td>
+      <td><%= invoice.company_name  %></td>
+      <td><%= invoice.customer_name  %></td>
+      <td><%= invoice.currency  %><%= invoice.amount  %></td>
+      <td> 
+      <div class="btn-group" role="group">
+      <%= link_to  "Details", invoice_path(invoice), method: :get, class: "btn btn-sm btn-secondary"  %>
+      <%= link_to "Edit", edit_invoice_path(invoice), method: :get, class: "btn btn-sm btn-secondary" %>
+      <%= link_to  "Delete", invoice_path(invoice), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-secondary"  %>
+       </div>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+
+</table>
+</div>
+</div>
