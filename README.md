@@ -1,24 +1,8 @@
-# README
+# facture
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Facture is a simple, minimalistic, mobile-ready, Ruby of rails powered Invoice app.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  - You can create and manage invoices
+  - Print or download invoices in pdf format
+  - more features... coming soon.
