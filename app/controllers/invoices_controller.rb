@@ -31,6 +31,7 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(invoice_params)
+    @invoice.user = User.first
     if @invoice.save
       flash[:notice] = "Invoice created successfully"
       redirect_to @invoice
